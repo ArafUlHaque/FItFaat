@@ -98,6 +98,7 @@ Users can:
 - Select a food from a curated list or enter a custom food.
 - Enter a portion and review its calories and macronutrients.
 - Attach, replace, or remove one optional food photo per entry.
+- Use automatic food recognition or calorie estimation from images.
 - Edit or delete their entries.
 - View daily calorie, protein, carbohydrate, and fat totals.
 
@@ -112,7 +113,7 @@ Acceptance criteria:
 - Food photos are private to the entry's owner.
 - Deleting an entry also removes its attached stored photo.
 - Nutrition totals use the recorded food values and portion.
-- A photo alone does not generate a calorie or nutrition value.
+- Calorie or nutrition estimates from a photo are suggestions that the user must review and confirm before they are saved.
 - Editing a food in the catalogue does not silently change
   previously saved diary entries.
 
@@ -213,7 +214,6 @@ Ownership can be rebalanced as the workload becomes clearer.
 ## 6. Outside the First Release
 
 - Personal profile photos, body photos, and progress photos
-- Automatic food recognition or calorie estimation from images
 - Wearable and device integrations
 - Social feeds and public sharing of private records
 - Payments and subscription billing

@@ -81,7 +81,7 @@ without a clear task requirement.
 - Food photos are optional attachments to food-diary entries.
 - Follow the MVP's file type, size, privacy, and deletion requirements.
 - Validate actual image content; do not trust the filename alone.
-- Never infer calories or nutrition from a photo in the first release.
+- Infer calories or nutrition from a photo only as the MVP's food-photo rules allow, and never save an estimate without user confirmation.
 
 ## Interface Rules
 
