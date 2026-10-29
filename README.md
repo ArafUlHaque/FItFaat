@@ -17,8 +17,10 @@ Features listed below are planned, not completed.
 ## Technology Stack
 
 - Frontend: React, Vite, JavaScript
+- Styling and UI: Tailwind CSS, shadcn/ui, Motion for React
 - Backend: Node.js, Express
 - Database: MongoDB, Mongoose
+- Deployment: Render (frontend and backend), MongoDB Atlas (database)
 - Package manager: npm
 - Version control: Git and GitHub
 - Project management: Jira with Scrum
@@ -40,21 +42,21 @@ Features listed below are planned, not completed.
 FitFaat will not request personal profile photos, body photos,
 or progress photos. Photo uploads are intended only for food.
 
-See [MVP requirements](docs/requirements/MVP.md) for the detailed
-first-release scope.
+See [requirements](docs/requirements/requirements.md) for the detailed
+feature list.
 
 ## Main Directories
 
 - `client/`: React frontend
 - `server/`: Express backend
-- `docs/requirements/`: First-release requirements
+- `docs/requirements/`: Feature requirements
 
 ## Project Documents
 
 - `README.md`: Project overview and setup
-- `docs/requirements/MVP.md`: Features and acceptance criteria
+- `docs/requirements/requirements.md`: Feature list
 - `AGENTS.md`: Shared development instructions for AI tools
-- `DESIGN.md`: Empty placeholder for future design decisions
+- `DESIGN.md`: Visual design language and Figma links
 
 ## Development Setup
 
@@ -87,7 +89,7 @@ Use the actual Jira project key once it has been created.
 Start AI sessions from the repository root.
 
 Tell the AI to read `AGENTS.md` and the relevant sections of
-`docs/requirements/MVP.md` before making changes.
+`docs/requirements/requirements.md` before making changes.
 
 Each developer remains responsible for understanding, testing,
 and explaining the code they submit.
