@@ -7,8 +7,10 @@ FitFaat is a three-person MERN fitness and nutrition project.
 Use:
 
 - React, Vite, and JavaScript for the frontend.
+- Tailwind CSS, shadcn/ui, and Motion for React for styling and UI.
 - Node.js and Express for the backend.
 - MongoDB and Mongoose for persistence.
+- Render (frontend and backend) and MongoDB Atlas for deployment.
 - npm for package management.
 
 Keep the implementation straightforward and understandable
@@ -17,14 +19,14 @@ for a student team.
 ## Read Before Working
 
 1. Read `README.md` for the project overview and current setup.
-2. Read the relevant sections of `docs/requirements/MVP.md`.
+2. Read the relevant sections of `docs/requirements/requirements.md`.
 3. Inspect existing code and package configuration.
 4. Read `DESIGN.md` when working on the interface.
 
-`DESIGN.md` is currently an empty placeholder. An empty file does
-not mean that a visual design has been approved.
+`DESIGN.md` defines the visual design language: colours, typography,
+components, and screen rules, with links to the Figma kit.
 
-The MVP document defines feature scope and acceptance criteria.
+The requirements document defines the feature list.
 This file defines development behaviour.
 
 If the task conflicts with those requirements, explain the
@@ -52,7 +54,7 @@ conflict before implementing a different behaviour.
 - `server/src/modules/`: Feature-specific backend code.
 - `server/src/middleware/`: Shared request middleware.
 - `server/src/config/`: Application configuration.
-- `docs/requirements/MVP.md`: First-release requirements.
+- `docs/requirements/requirements.md`: Feature requirements.
 
 Follow existing patterns. Do not reorganize the repository
 without a clear task requirement.
@@ -66,7 +68,7 @@ without a clear task requirement.
 - Validate incoming data on the server.
 - Use consistent API responses and error handling.
 - Coordinate shared API and data-model changes with affected owners.
-- Use the units and historical-record rules defined in the MVP.
+- Use the units and historical-record rules defined in the requirements.
 - Never present mock records as a user's actual saved data.
 
 ## Accounts and Uploads
@@ -79,9 +81,9 @@ without a clear task requirement.
 - Never expose secrets through frontend environment variables.
 - Do not implement personal profile, body, or progress-photo uploads.
 - Food photos are optional attachments to food-diary entries.
-- Follow the MVP's file type, size, privacy, and deletion requirements.
+- Follow the requirements' file type, size, privacy, and deletion requirements.
 - Validate actual image content; do not trust the filename alone.
-- Infer calories or nutrition from a photo only as the MVP's food-photo rules allow, and never save an estimate without user confirmation.
+- Infer calories or nutrition from a photo only as the requirements' food-photo rules allow, and never save an estimate without user confirmation.
 
 ## Interface Rules
 
@@ -90,7 +92,7 @@ without a clear task requirement.
 - Use labelled inputs, keyboard-accessible controls, and visible focus.
 - Handle loading, empty, error, and success states where relevant.
 - Respect reduced-motion preferences when adding animation.
-- Until design decisions are approved, use simple, consistent styling.
+- Follow the colours, typography, and components in `DESIGN.md`.
 - Do not install or invoke external design skills unless requested
   for the task.
 
@@ -117,10 +119,10 @@ without a clear task requirement.
 ## Documentation
 
 - Update the README when setup or commands change.
-- Update the MVP when the team explicitly changes requirements.
+- Update the requirements when the team explicitly changes requirements.
 - Keep these three documents consistent.
 - Do not mark planned features as implemented without verification.
-- Leave `DESIGN.md` empty until design work is explicitly requested.
+- Update `DESIGN.md` when the Figma kit or design rules change.
 
 ## Completion Report
 
