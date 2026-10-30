@@ -17,9 +17,14 @@ File: [FitFaat](https://www.figma.com/design/Hdg7b2cFmstlGmipSqjqB8/FitFaat)
 
 | What | Where |
 | --- | --- |
+| Foundations: colour, type, shape, spacing, do and don't | [Style Guide → Foundations](https://www.figma.com/design/Hdg7b2cFmstlGmipSqjqB8/FitFaat?node-id=7-71) |
 | Playful kit: colours, type, components, icons | [Style Guide → Playful kit](https://www.figma.com/design/Hdg7b2cFmstlGmipSqjqB8/FitFaat?node-id=29-103) |
 | Reference screens: landing, login, sign-up | [Landing & Auth → Playful redesign](https://www.figma.com/design/Hdg7b2cFmstlGmipSqjqB8/FitFaat?node-id=30-523) |
+| App shell kit: hub tiles, top bar, feature header, premium | [Style Guide → App shell kit](https://www.figma.com/design/Hdg7b2cFmstlGmipSqjqB8/FitFaat?node-id=55-181) |
+| App shell screens: home hub (populated, empty), feature page template | [Member Features → App shell (shared)](https://www.figma.com/design/Hdg7b2cFmstlGmipSqjqB8/FitFaat?node-id=56-594) |
 | Feature screens | Member Features page, one section per member |
+| Exercise library kit and screens (Member 1) | [Style Guide → Exercise library kit](https://www.figma.com/design/Hdg7b2cFmstlGmipSqjqB8/FitFaat?node-id=62-220), [Member Features → Exercise library](https://www.figma.com/design/Hdg7b2cFmstlGmipSqjqB8/FitFaat?node-id=63-1003) |
+| Programme generator kit and screens (Member 1) | [Style Guide → Programme generator kit](https://www.figma.com/design/Hdg7b2cFmstlGmipSqjqB8/FitFaat?node-id=83-180), [Member Features → Programme generator](https://www.figma.com/design/Hdg7b2cFmstlGmipSqjqB8/FitFaat?node-id=84-798) |
 
 Rules for working in Figma:
 
@@ -35,6 +40,17 @@ Rules for working in Figma:
   component and tell the team. Do not draw a one-off copy.
 - Name frames `Feature — Device / State`, for example
   `Food diary — Desktop / Empty`.
+- When several screens are states of one page, make the shared part
+  a component inside the main screen and place instances on the
+  others. Edit the main screen; changes made on an instance stay on
+  that screen and stop later updates for that part. Current main
+  screens and their shared parts:
+  - Library Results: Page top (title and tabs) and Filters.
+  - Proposed programme: the whole page content. The Swap exercise
+    screen uses it.
+  - Quiz 1 Goal: the question header (progress, step label,
+    question).
+  - Home hub Populated: the tile groups.
 
 ## Colour
 
@@ -66,9 +82,15 @@ the areas apart.
 | Food diary, food photos | Blue | `#3AA0D8` | `#1A6A9E` | `#E3F3FC` |
 | Recipes, meal planning | Yellow | `#FFC93C` | `#8A6400` | `#FFF6D6` |
 | Measurements, progress | Pink | `#F06292` | `#B02A55` | `#FFE9EF` |
+| Premium | Teal | `#5DD3B6` | `#0F6E56` | `#E1F7F0` |
 
 The dashboard combines all of them, with each card in the colour
 of the feature it links to.
+
+Teal (`playful/teal`, `playful/teal-ink`, `playful/teal-pale`) is
+reserved for premium: the Go premium button, the premium home tile,
+and premium-only labels. Premium uses the Tabler `diamond` icon.
+Do not use black or a crown for premium.
 
 Purple is also the shared colour for focus and selection
 (focused input border, selected goal option).
@@ -156,10 +178,62 @@ already gives depth.
 | Pill | Purple, Orange, Lime | Small tag for labels such as "Example" or a status. |
 | Playful Logo | Light, Dark | Light on cream or white, Dark on ink. |
 | Auth Side Panel | — | Left half of the desktop login and sign-up screens. |
+| Top Bar | — | Top of the home hub: logo, Premium Button, Avatar. |
+| Feature Header | — | Top of every feature page: Back Button, breadcrumb, Nav Pills, Avatar. |
+| Hub Tile | Lime, Orange, Purple, Blue, Yellow, Pink, Neutral | Home hub tile with icon, title, and a one-line summary. Neutral is for features without a colour. |
+| Premium Tile | — | Wide teal tile on the home hub. |
+| Premium Button | — | Teal button with the diamond icon. |
+| Back Button | — | White button with an arrow, labelled "Home". |
+| Nav Pill | Default, Selected | Links the pages in one group on the feature header. |
+| Avatar | — | Profile button showing initials. No photos. |
+| Tab | Selected, not selected | Switches views inside one page, such as All exercises and Favourites. |
+| Filter Chip | — | An active filter on a lime chip with an × that removes it. |
+| Alert Banner | — | Page-level error with a red border and icon; the text stays dark. |
+| Heart Toggle | Saved, not saved | 44px favourite button. Its label says "Add to favourites" or "Saved to favourites". |
+| Exercise Card | Saved, not saved | Exercise library result: media, name, muscle pill, equipment. |
+| Quiz Progress | Steps 1–5 | Back arrow, five purple segments, and "X of 5" for the programme quiz. |
+| Template Card | Best match, other | A programme template. Five segments show how many of the 5 quiz answers it matches; unmatched segments use `playful/track`. |
+| Reason Box | — | Purple "Why this programme" note that explains the match. |
+| Day Cell | Workout, Selected, Rest | One day of the programme week. Rest days use a dashed border. |
+| Week Dot | Current, Upcoming | One week of the programme in the progress row. |
+| Programme Exercise Row | — | Muscle pill, exercise name, sets × reps · weight, and a Swap Chip. |
+| Swap Chip | — | Small white button that opens the swap pop-up. |
+| Swap Option | Selected, not selected | An alternative exercise in the swap pop-up. |
 
 Icons are [Tabler Icons](https://tabler.io/icons), outline style,
 2px stroke, in the `Icon/*` components. In code, use the same icon
 names from the Tabler set.
+
+## App Shell
+
+Signed-in pages use a **home hub** layout. There is no sidebar.
+
+**Home hub** (route `/`). This page is also the dashboard.
+
+- Top bar: Playful Logo on the left; the Go premium button and the
+  profile avatar on the right.
+- A greeting and today's date.
+- A "Today" row: the scheduled workout with a Start workout button,
+  calories against the daily target, and the weight trend.
+- Feature tiles in three groups. Each tile has the feature's colour,
+  icon and name, plus one line of live summary, such as
+  "12 favourites".
+  - Training: Exercise library, Workouts, Programmes, Activity.
+  - Nutrition: Food diary, Recipes, Meal plans, Habits.
+  - Progress: Measurements, Weekly review, and a wide premium tile.
+
+**Feature pages.** Every other signed-in page starts with a feature
+header:
+
+- A ← Home button and a breadcrumb, such as
+  "Training › Exercise library".
+- On the right, pills linking the other pages in the same group,
+  with the current page selected in its feature colour.
+- Below the header: the page title (`Playful/Heading H1`), a
+  one-line subtitle, and at most one Primary button.
+
+Summaries on the hub must use the user's real records. Show missing
+data as empty, not invented.
 
 ## Screen Rules
 
@@ -209,6 +283,8 @@ before building the matching code.
   12px pill text.
 - The `playful/field-border` colour is 1.5:1 against white, below
   the 3:1 that WCAG asks for input borders.
-- The signed-in app shell (navigation bar or sidebar) is not
-  designed yet. Agree on it as a team before designing feature
-  screens, so they all share the same layout.
+- Playful Input shows its Value in the muted placeholder colour in
+  the Default state. When a field holds a real value, set the
+  value text to `text/primary`; the Exercise library screens do this.
+- Activity, Habits, and Weekly review have no feature colour yet.
+  They use plain white tiles until the team assigns colours.
