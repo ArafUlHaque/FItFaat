@@ -8,9 +8,9 @@ and meal plans, and review their progress.
 
 ## Project Status
 
-The repository currently contains the initial directory structure.
-The application, installation steps, and development commands are
-not configured yet.
+The Express server is set up with a shared MongoDB Atlas connection,
+sign-up and sign-in, and a health check. The React client is not
+set up yet.
 
 Features listed below are planned, not completed.
 
@@ -60,10 +60,73 @@ feature list.
 
 ## Development Setup
 
-Setup instructions will be added when the frontend and backend
-are initialized.
+Requires Node.js 20 or later.
 
-The repository includes `.env.example` as a configuration reference.
+### Backend
+
+1. Install dependencies from the repository root:
+
+   ```bash
+   npm install
+   ```
+
+2. Copy `server/.env.example` to `server/.env` and fill it in:
+   - `MONGODB_URI`: your own database user for the shared Atlas
+     cluster (ask Araf). Everyone uses the same `fitfaat_dev` database.
+   - `PORT`: the last four digits of your student ID.
+   - `JWT_SECRET`: a long random string.
+
+3. Start the server with automatic restarts:
+
+   ```bash
+   npm run dev:server
+   ```
+
+   `GET http://localhost:<PORT>/api/v1/health` should report
+   `"database": "connected"`.
+
+   If startup fails with `querySrv ECONNREFUSED`, Node can't look up
+   the Atlas address through your DNS settings. Add
+   `DNS_SERVERS=8.8.8.8,1.1.1.1` to `server/.env`.
+
+4. Run the tests:
+
+   ```bash
+   npm run test:server
+   ```
+
+### Shared database rules
+
+- All members use one Atlas cluster and the `fitfaat_dev` database.
+- Change only your own feature's collections. The `users` collection
+  is shared; agree changes with the team first.
+- Never drop collections or delete all documents in `fitfaat_dev`.
+- Add reference data, such as templates or food lists, through a seed
+  script in your module, not by hand.
+
+### Backend conventions
+
+- Feature code goes in `server/src/modules/<feature>/`, with its
+  routes mounted in `server/src/app.js` under `/api/v1/`.
+- Protect private routes with `requireAuth`, then use `req.userId`
+  as the owner of every record. Never trust a user ID from the
+  request body.
+- Successful responses use `{ "success": true, "data": ... }`.
+- Throw `new ApiError(status, message, details)` for errors; the
+  error handler sends `{ "success": false, "error": { "message",
+  "details" } }`.
+
+Auth endpoints:
+
+| Method | Endpoint | Body | Auth |
+| --- | --- | --- | --- |
+| POST | `/api/v1/auth/register` | `name`, `email`, `password` | None |
+| POST | `/api/v1/auth/login` | `email`, `password` | None |
+| GET | `/api/v1/auth/me` | None | `Authorization: Bearer <token>` |
+
+Register and login return `{ user, token }`. Sign out by discarding
+the token on the client.
+
 Never commit real credentials, local environment files, or uploaded
 user images.
 
