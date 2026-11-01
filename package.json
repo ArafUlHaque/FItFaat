@@ -6,5 +6,9 @@
   "workspaces": [
     "client",
     "server"
-  ]
+  ],
+  "scripts": {
+    "dev:server": "npm run dev -w server",
+    "test:server": "npm test -w server"
+  }
 }
