@@ -25,6 +25,9 @@ File: [FitFaat](https://www.figma.com/design/Hdg7b2cFmstlGmipSqjqB8/FitFaat)
 | Feature screens | Member Features page, one section per member |
 | Exercise library kit and screens (Member 1) | [Style Guide → Exercise library kit](https://www.figma.com/design/Hdg7b2cFmstlGmipSqjqB8/FitFaat?node-id=62-220), [Member Features → Exercise library](https://www.figma.com/design/Hdg7b2cFmstlGmipSqjqB8/FitFaat?node-id=63-1003) |
 | Programme generator kit and screens (Member 1) | [Style Guide → Programme generator kit](https://www.figma.com/design/Hdg7b2cFmstlGmipSqjqB8/FitFaat?node-id=83-180), [Member Features → Programme generator](https://www.figma.com/design/Hdg7b2cFmstlGmipSqjqB8/FitFaat?node-id=84-798) |
+| Recipes and Habits kit (Member 2) | [Style Guide → Member 2 kit](https://www.figma.com/design/Hdg7b2cFmstlGmipSqjqB8/FitFaat?node-id=138-181) |
+| Recipes screens (Member 2) | [Member Features → Recipes](https://www.figma.com/design/Hdg7b2cFmstlGmipSqjqB8/FitFaat?node-id=140-1564) |
+| Habits screens (Member 2) | [Member Features → Habits](https://www.figma.com/design/Hdg7b2cFmstlGmipSqjqB8/FitFaat?node-id=141-1892) |
 
 Rules for working in Figma:
 
@@ -51,6 +54,10 @@ Rules for working in Figma:
   - Quiz 1 Goal: the question header (progress, step label,
     question).
   - Home hub Populated: the tile groups.
+  - Recipes Editor: the whole page content. The Servings error
+    screen uses it.
+  - Habits Today: the whole page content. The New habit screen
+    uses it under a scrim.
 
 ## Colour
 
@@ -199,6 +206,15 @@ already gives depth.
 | Programme Exercise Row | — | Muscle pill, exercise name, sets × reps · weight, and a Swap Chip. |
 | Swap Chip | — | Small white button that opens the swap pop-up. |
 | Swap Option | Selected, not selected | An alternative exercise in the swap pop-up. |
+| Ingredient Row | — | Recipe ingredient: name, raw amount in g, energy in kcal, and a remove button. |
+| Macro Line | Protein, Carbs, Fat | Coloured dot, macro name and grams, using the `data/*` colours. |
+| Segmented Toggle | Servings, Cooked weight | Chooses how a recipe is split. |
+| Stepper | — | Minus and plus buttons around a number, such as servings. |
+| Recipe Card | — | A saved recipe on the Recipes list: name, servings, kcal and macros per serving. |
+| Habit Tile | To do, In progress, Selected, Complete | A habit for today: progress ring, name, amount and an action. Selected marks the habit whose history is open. |
+| Reminder Banner | — | Purple in-app reminder for a habit that is due, with Dismiss. |
+| History Cell | Met, Partly, Missed, Today | One day in a habit's history grid. |
+| Stat Box | — | A small labelled number, such as days met in the last 4 weeks. |
 
 Icons are [Tabler Icons](https://tabler.io/icons), outline style,
 2px stroke, in the `Icon/*` components. In code, use the same icon
@@ -287,4 +303,8 @@ before building the matching code.
   the Default state. When a field holds a real value, set the
   value text to `text/primary`; the Exercise library screens do this.
 - Activity, Habits, and Weekly review have no feature colour yet.
-  They use plain white tiles until the team assigns colours.
+  They use plain white tiles until the team assigns colours. The
+  Habits nav pill uses the default lime Selected state for now.
+- The selected Nav Pill is lime on every page except Recipes, which
+  overrides it to yellow. Programmes still shows lime instead of
+  purple. Make the Nav Pill follow the feature colour everywhere.
