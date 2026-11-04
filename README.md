@@ -17,7 +17,8 @@ Features listed below are planned, not completed.
 ## Technology Stack
 
 - Frontend: React, Vite, JavaScript
-- Styling and UI: Tailwind CSS, shadcn/ui, Motion for React
+- Styling: Tailwind CSS, with the team's own components from
+  `DESIGN.md`
 - Backend: Node.js, Express
 - Database: MongoDB, Mongoose
 - Deployment: Render (frontend and backend), MongoDB Atlas (database)
@@ -28,28 +29,25 @@ Features listed below are planned, not completed.
 
 ## Planned Features
 
-- User accounts, profiles, and fitness goals
-- Exercise library
-- Workout logging and history
-- Personalized workout plans
-- Food diary with optional food photos
-- Calorie and macronutrient tracking
-- Recipe nutrition calculator
-- Meal planning
-- Body measurements and progress charts
-- Fitness and nutrition dashboard
+| Module | Member 1 | Member 2 | Member 3 |
+| --- | --- | --- | --- |
+| 1 | Exercise library with favourites (wger API) | AI meal photo nutrition estimate (Gemini API) | Measurements, goals, and progress |
+| 2 | Workout sessions | Recipe nutrition calculator | Activity tracking |
+| 3 | Workout programme generator | Meal scheduling and shopping list | Weekly review and suggestions |
+| 3 | Workout programme adjustment | Habit tracking | Premium packages (SSLCOMMERZ sandbox) |
 
-FitFaat will not request personal profile photos, body photos,
-or progress photos. Photo uploads are intended only for food.
+Sign-up, sign-in, profiles, the food diary, and the dashboard
+support these features but are not counted as features.
 
 See [requirements](docs/requirements/requirements.md) for the detailed
 feature list.
 
 ## Main Directories
 
-- `client/`: React frontend
+- `client/`: React frontend (not created yet)
 - `server/`: Express backend
 - `docs/requirements/`: Feature requirements
+- `docs/api/`: API documentation and Postman collection
 
 ## Project Documents
 
@@ -156,6 +154,3 @@ Tell the AI to read `AGENTS.md` and the relevant sections of
 
 Each developer remains responsible for understanding, testing,
 and explaining the code they submit.
-
-Automation, advanced repository configuration, and additional
-documentation will be introduced later when needed.

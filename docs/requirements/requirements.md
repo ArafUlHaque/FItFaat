@@ -23,14 +23,7 @@ record their fitness routines.
 
 ## 3. Tech Stack
 
-- Language: JavaScript
-- Frontend: React with Vite
-- Backend: Node.js and Express.js
-- Styling and UI: Tailwind CSS, shadcn/ui, and Motion for React
-- Database: MongoDB
-- Data modelling: Mongoose
-- Deployment: Render (React frontend and Express backend) with
-  MongoDB Atlas (database)
+See the technology stack in [README.md](../../README.md).
 
 ## 4. Feature List
 
@@ -201,6 +194,9 @@ These support the 12 features and are common workflows.
 
 #### Food Diary
 
+Owner: not decided yet. Features 4.2, 4.5, and 4.9 save entries
+here, so it must exist before they can be completed.
+
 - Add a food entry for a date and meal, from a curated list, a custom
   food, a saved recipe portion, a planned meal, or a confirmed meal
   photo estimate.
@@ -211,6 +207,9 @@ These support the 12 features and are common workflows.
   previously saved diary entries.
 
 #### Dashboard
+
+Owner: not decided yet. The dashboard is the home hub described
+in `DESIGN.md`.
 
 - View the scheduled workout, recent workout activity, daily calorie
   and macronutrient totals, and recent measurement trends.

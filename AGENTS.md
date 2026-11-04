@@ -4,14 +4,9 @@
 
 FitFaat is a three-person MERN fitness and nutrition project.
 
-Use:
-
-- React, Vite, and JavaScript for the frontend.
-- Tailwind CSS, shadcn/ui, and Motion for React for styling and UI.
-- Node.js and Express for the backend.
-- MongoDB and Mongoose for persistence.
-- Render (frontend and backend) and MongoDB Atlas for deployment.
-- npm for package management.
+Use the technology stack listed in `README.md`. For styling, use
+Tailwind CSS and build components from `DESIGN.md` yourself; do not
+add a component or animation library.
 
 Keep the implementation straightforward and understandable
 for a student team.
