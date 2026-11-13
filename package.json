@@ -9,6 +9,7 @@
   ],
   "scripts": {
     "dev:server": "npm run dev -w server",
-    "test:server": "npm test -w server"
+    "test:server": "npm test -w server",
+    "seed:templates": "npm run seed:templates -w server"
   }
 }

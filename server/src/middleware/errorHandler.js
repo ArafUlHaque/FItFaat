@@ -29,7 +29,10 @@ export function errorHandler(err, req, res, next) {
     message = "Request body is not valid JSON";
   }
 
-  if (status >= 500) {
+  // Hide details of unexpected crashes. An ApiError we threw on purpose
+  // (e.g. 503 "wger is unavailable") keeps its message, because it is safe
+  // and tells the user what to do.
+  if (status >= 500 && !(err instanceof ApiError)) {
     console.error(err);
     message = "Something went wrong on the server";
     details = undefined;

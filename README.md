@@ -95,6 +95,14 @@ Requires Node.js 20 or later.
    npm run test:server
    ```
 
+5. Reference data: the programme templates live in
+   `server/src/modules/programmes/templates.data.js`. After changing
+   that file, copy it into the database (safe to run more than once):
+
+   ```bash
+   npm run seed:templates
+   ```
+
 ### Shared database rules
 
 - All members use one Atlas cluster and the `fitfaat_dev` database.
@@ -126,6 +134,32 @@ Auth endpoints:
 
 Register and login return `{ user, token }`. Sign out by discarding
 the token on the client.
+
+Exercise library and favourites (4.1). Exercise data comes from the
+public [wger API](https://wger.de/api/v2/); if wger is unreachable the
+API returns `503` with an explanation.
+
+| Method | Endpoint | Body / query | Auth |
+| --- | --- | --- | --- |
+| GET | `/api/v1/exercises` | `search`, `muscle`, `equipment` (wger ids), `page`, `limit` | None |
+| GET | `/api/v1/exercises/filters` | None | None |
+| GET | `/api/v1/exercises/:id` | None | None |
+| GET | `/api/v1/favourites` | None | Bearer token |
+| POST | `/api/v1/favourites` | `exerciseId` | Bearer token |
+| DELETE | `/api/v1/favourites/:exerciseId` | None | Bearer token |
+
+Programme generator (4.7). The matching rules are documented at the
+top of `server/src/modules/programmes/programme.rules.js`.
+
+| Method | Endpoint | Body | Auth |
+| --- | --- | --- | --- |
+| GET | `/api/v1/programmes/templates` | None | None |
+| POST | `/api/v1/programmes/generate` | `goal`, `experience`, `equipment`, `daysPerWeek`, `sessionMinutes` | None |
+| POST | `/api/v1/programmes` | `templateKey`, `name?`, `answers`, `schedule` | Bearer token |
+| GET | `/api/v1/programmes` | None | Bearer token |
+| GET | `/api/v1/programmes/:id` | None | Bearer token |
+| PATCH | `/api/v1/programmes/:id` | `name` | Bearer token |
+| DELETE | `/api/v1/programmes/:id` | None | Bearer token |
 
 Never commit real credentials, local environment files, or uploaded
 user images.
