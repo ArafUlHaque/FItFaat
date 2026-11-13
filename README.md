@@ -164,6 +164,30 @@ top of `server/src/modules/programmes/programme.rules.js`.
 Never commit real credentials, local environment files, or uploaded
 user images.
 
+Recipe nutrition calculator (4.5). Portions logged to the food diary store a frozen nutrition snapshot so later recipe edits do not alter past diary entries.
+
+| Method | Endpoint | Body / query | Auth |
+| --- | --- | --- | --- |
+| GET | `/api/v1/recipes` | None | Bearer token |
+| POST | `/api/v1/recipes` | `name`, `notes?`, `splitMode`, `servings?`, `cookedWeightGrams?`, `ingredients` | Bearer token |
+| GET | `/api/v1/recipes/:id` | None | Bearer token |
+| PUT | `/api/v1/recipes/:id` | `name`, `notes?`, `splitMode`, `servings?`, `cookedWeightGrams?`, `ingredients` | Bearer token |
+| DELETE | `/api/v1/recipes/:id` | None | Bearer token |
+| POST | `/api/v1/recipes/:id/log` | `date?`, `mealType?`, `amount?` | Bearer token |
+
+Habit tracking (4.10). Supports completion-based and measurable daily goals, 28-day history grids, and in-app reminders.
+
+| Method | Endpoint | Body / query | Auth |
+| --- | --- | --- | --- |
+| GET | `/api/v1/habits` | `date?` (`YYYY-MM-DD`) | Bearer token |
+| GET | `/api/v1/habits/reminders` | `date?`, `time?` (`HH:MM`) | Bearer token |
+| POST | `/api/v1/habits` | `name`, `goalType`, `targetValue?`, `unit?`, `repeatDays?`, `reminderEnabled?`, `reminderTime?` | Bearer token |
+| GET | `/api/v1/habits/:id` | `date?`, `days?` (1–90, default 28) | Bearer token |
+| PATCH | `/api/v1/habits/:id` | `name`, `goalType`, `targetValue?`, `unit?`, `repeatDays?`, `reminderEnabled?`, `reminderTime?` | Bearer token |
+| DELETE | `/api/v1/habits/:id` | None | Bearer token |
+| POST | `/api/v1/habits/:id/progress` | `date?`, `value?` or `delta?` | Bearer token |
+| POST | `/api/v1/habits/:id/dismiss-reminder` | `date?` | Bearer token |
+
 ## Team Workflow
 
 Each member owns complete features, including their frontend,
