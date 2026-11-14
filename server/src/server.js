@@ -10,6 +10,8 @@ try {
   process.exit(1);
 }
 
-app.listen(env.port, () => {
-  console.log(`FitFaat API running on http://localhost:${env.port}/api/v1`);
+const port = Number(process.env.PORT) || env.port || 5000;
+
+app.listen(port, () => {
+  console.log(`FitFaat API running on http://localhost:${port}/api/v1`);
 });
