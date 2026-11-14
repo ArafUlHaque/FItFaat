@@ -4,6 +4,9 @@ import { env } from "./config/env.js";
 import { isDBConnected } from "./config/db.js";
 import { errorHandler, notFound } from "./middleware/errorHandler.js";
 import authRoutes from "./modules/auth/auth.routes.js";
+import exerciseRoutes from "./modules/exercises/exercise.routes.js";
+import favouriteRoutes from "./modules/favourites/favourite.routes.js";
+import programmeRoutes from "./modules/programmes/programme.routes.js";
 
 const app = express();
 
@@ -18,8 +21,10 @@ app.get("/api/v1/health", (req, res) => {
 });
 
 app.use("/api/v1/auth", authRoutes);
-// Feature routes go here, one line per module, e.g.
-// app.use("/api/v1/favourites", favouriteRoutes);
+// Feature routes go here, one line per module.
+app.use("/api/v1/exercises", exerciseRoutes); // Member 1: 4.1 Exercise library
+app.use("/api/v1/favourites", favouriteRoutes); // Member 1: 4.1 Favourites
+app.use("/api/v1/programmes", programmeRoutes); // Member 1: 4.7 Programme generator
 
 app.use(notFound);
 app.use(errorHandler);
